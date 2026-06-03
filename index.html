@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="public/favicon-2.png">
+  <title>عيادات لومير | الجلدية والليزر والتجميل</title>
+  <meta name="description" content="عيادات لومير الفاخرة للجلدية والليزر والتجميل - نقدم أرقى الخدمات بأعلى معايير الجودة العالمية">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            background: '#F8F9FA',
+            foreground: '#1A1A2E',
+            card: '#FFFFFF',
+            'card-foreground': '#1A1A2E',
+            primary: '#0D9488',
+            'primary-foreground': '#FFFFFF',
+            secondary: '#F1F5F9',
+            'secondary-foreground': '#1A1A2E',
+            muted: '#F1F5F9',
+            'muted-foreground': '#64748B',
+            accent: '#D4AF37',
+            'accent-foreground': '#1A1A2E',
+            border: '#E2E8F0',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #F8F9FA;
+    }
+    .safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  </style>
+</head>
+<body class="bg-background text-foreground">
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 right-0 left-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-14 h-10 rounded-full flex items-center justify-center">
+            <!-- <span class="text-primary-foreground font-bold text-lg">ل</span> -->
+            <img class="cursor-pointer" src="public/favicon-2.png" alt="logo" >
+          </div>
+          <span class="text-2xl font-bold text-foreground">لومير</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-muted-foreground hover:text-primary transition-colors font-medium">خدماتنا</a>
+          <a href="#doctors" class="text-muted-foreground hover:text-primary transition-colors font-medium">طبيباتنا</a>
+          <a href="#testimonials" class="text-muted-foreground hover:text-primary transition-colors font-medium">آراء العملاء</a>
+          <a href="#booking" class="text-muted-foreground hover:text-primary transition-colors font-medium">احجز موعد</a>
+        </nav>
+
+        <!-- CTA Section -->
+        <div class="hidden md:flex items-center gap-4">
+          <a href="tel:+966500000000" class="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span class="font-medium" dir="ltr">+966 50 000 0000</span>
+          </a>
+          <a href="#booking" class="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all">
+            احجز موعدك الآن
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" class="md:hidden p-2 text-foreground" aria-label="Toggle menu">
+          <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden py-4 border-t border-border">
+        <nav class="flex flex-col gap-4">
+          <a href="#services" class="text-muted-foreground hover:text-primary transition-colors font-medium py-2" onclick="closeMobileMenu()">خدماتنا</a>
+          <a href="#doctors" class="text-muted-foreground hover:text-primary transition-colors font-medium py-2" onclick="closeMobileMenu()">طبيباتنا</a>
+          <a href="#testimonials" class="text-muted-foreground hover:text-primary transition-colors font-medium py-2" onclick="closeMobileMenu()">آراء العملاء</a>
+          <a href="#booking" class="text-muted-foreground hover:text-primary transition-colors font-medium py-2" onclick="closeMobileMenu()">احجز موعد</a>
+          <div class="pt-4 border-t border-border">
+            <a href="tel:+966500000000" class="flex items-center gap-2 text-muted-foreground mb-4">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span dir="ltr">+966 50 000 0000</span>
+            </a>
+            <a href="#booking" class="block w-full text-center bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold py-3" onclick="closeMobileMenu()">احجز موعدك الآن</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-background">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Content -->
+        <div class="text-center lg:text-right order-2 lg:order-1">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-8">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            <span class="text-sm font-medium">عيادات الجلدية والليزر والتجميل</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            <span>إشراقتك الطبيعية،</span>
+            <br>
+            <span class="text-primary">هويتك الفاخرة</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 lg:mr-0">
+            نقدم لك أرقى خدمات الجلدية والليزر والتجميل بأحدث التقنيات العالمية 
+            وفريق من أمهر الاستشاريين لنمنحك بشرة مشرقة تليق بك
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#booking" class="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-full text-lg font-semibold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 text-center">
+              احجز استشارتك المجانية
+            </a>
+            <a href="#services" class="border-2 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all text-center">
+              اكتشف خدماتنا
+            </a>
+          </div>
+
+          <!-- Trust Indicators -->
+          <div class="mt-12 flex flex-wrap gap-8 justify-center lg:justify-start">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary">+١٥</div>
+              <div class="text-sm text-muted-foreground">سنوات خبرة</div>
+            </div>
+            <div class="w-px bg-border hidden sm:block"></div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary">+١٠٠٠٠</div>
+              <div class="text-sm text-muted-foreground">عميل سعيد</div>
+            </div>
+            <div class="w-px bg-border hidden sm:block"></div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary">٩٨٪</div>
+              <div class="text-sm text-muted-foreground">نسبة الرضا</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="order-1 lg:order-2 relative">
+          <div class="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none">
+            <!-- Decorative Elements -->
+            <div class="absolute -top-4 -right-4 w-full h-full border-2 border-accent/30 rounded-3xl"></div>
+            <div class="absolute -bottom-4 -left-4 w-full h-full bg-primary/10 rounded-3xl"></div>
+            
+            <!-- Main Image Container -->
+            <div class="relative bg-secondary rounded-3xl overflow-hidden shadow-2xl h-full">
+              <img 
+                src="https://i.pinimg.com/736x/74/18/e2/7418e2df9399c590aee88341c35f2e7b.jpg"
+                alt="عيادات لومير للجلدية والتجميل"
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent"></div>
+            </div>
+
+            <!-- Floating Card -->
+            <div class="absolute -bottom-6 -right-6 bg-card p-[1.2rem] rounded-2xl shadow-xl border border-border">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
+                  <span class="text-accent text-xl">⭐</span>
+                </div>
+                <div>
+                  <div class="font-bold text-foreground">تقييم ممتاز</div>
+                  <div class="text-sm text-muted-foreground">٤.٩ من ٥ نجوم</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24 lg:py-32 bg-secondary/50">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold text-sm tracking-wider mb-4">خدماتنا المتميزة</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">خدمات الجلدية والتجميل الشاملة</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          نقدم مجموعة متكاملة من خدمات الجلدية والليزر والتجميل بأعلى معايير الجودة العالمية
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <!-- Service 1 -->
+        <div class="group bg-card border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden rounded-xl">
+          <div class="p-8">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+              <svg class="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">علاجات البشرة المتقدمة</h3>
+            <p class="text-muted-foreground leading-relaxed">علاجات متطورة للبشرة تشمل التقشير الكيميائي والميكروديرم والهيدرافيشيال لبشرة نضرة ومشرقة</p>
+            <div class="mt-6 h-1 w-0 bg-accent group-hover:w-full transition-all duration-500 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="group bg-card border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden rounded-xl">
+          <div class="p-8">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+              <svg class="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">الليزر وإزالة الشعر</h3>
+            <p class="text-muted-foreground leading-relaxed">أحدث أجهزة الليزر العالمية لإزالة الشعر بشكل دائم وآمن مع نتائج فورية ومضمونة</p>
+            <div class="mt-6 h-1 w-0 bg-accent group-hover:w-full transition-all duration-500 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="group bg-card border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden rounded-xl">
+          <div class="p-8">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+              <svg class="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">الفيلر والبوتكس</h3>
+            <p class="text-muted-foreground leading-relaxed">حقن الفيلر والبوتكس التجميلية بأيدي خبيرة لنفخ الشفاه وعلاج التجاعيد وإبراز ملامح الوجه</p>
+            <div class="mt-6 h-1 w-0 bg-accent group-hover:w-full transition-all duration-500 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="group bg-card border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden rounded-xl">
+          <div class="p-8">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+              <svg class="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">النضارة والتجديد</h3>
+            <p class="text-muted-foreground leading-relaxed">جلسات النضارة والميزوثيرابي والبلازما لتجديد شباب البشرة ومنحها حيوية وإشراقاً طبيعياً</p>
+            <div class="mt-6 h-1 w-0 bg-accent group-hover:w-full transition-all duration-500 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Section -->
+  <section id="doctors" class="py-24 lg:py-32 bg-background">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold text-sm tracking-wider mb-4">فريقنا الطبي</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">طبيباتنا الاستشاريات</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          نخبة من أمهر الاستشاريات والمتخصصات في الجلدية والليزر والتجميل من أرقى الجامعات العالمية
+        </p>
+      </div>
+
+      <!-- Doctors Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Doctor 1 -->
+        <div class="group bg-card border border-border overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-xl cursor-pointer">
+          <div class="relative h-72 bg-secondary overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="h-full flex items-center justify-center">
+                <div class="w-28 h-28 rounded-full overflow-hidden">
+                    <img src="public/dr.harbi.png" alt="د. ليلى الحربي" class="w-full h-full object-cover">
+                </div>
+
+            </div>
+            <div class="absolute bottom-0 right-0 left-0 h-1 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
+          </div>
+          <div class="p-6">
+            <div class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">خبرة ١٥+ سنة</div>
+            <h3 class="text-xl font-bold text-foreground mb-2">د. ليلى الحربي</h3>
+            <p class="text-primary font-medium mb-3">استشارية الجلدية والتجميل</p>
+            <p class="text-muted-foreground text-sm">متخصصة في علاجات البشرة المتقدمة والليزر التجميلي</p>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="group bg-card border border-border overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-xl cursor-pointer">
+          <div class="relative h-72 bg-secondary overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="h-full flex items-center justify-center">
+                <div class="w-28 h-28 rounded-full overflow-hidden">
+                    <img src="public/dr.sarah.png" alt="د. سارة المنصور" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="absolute bottom-0 right-0 left-0 h-1 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
+          </div>
+          <div class="p-6">
+            <div class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">خبرة ١٢+ سنة</div>
+            <h3 class="text-xl font-bold text-foreground mb-2">د. سارة المنصور</h3>
+            <p class="text-primary font-medium mb-3">استشارية الليزر والتجميل</p>
+            <p class="text-muted-foreground text-sm">رائدة في تقنيات الليزر وإزالة الشعر بالليزر</p>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="group bg-card border border-border overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-xl cursor-pointer">
+          <div class="relative h-72 bg-secondary overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="h-full flex items-center justify-center">
+                <div class="w-28 h-28 rounded-full overflow-hidden">
+                    <img src="public/dr.norah.png" alt="د. نورة العتيبي" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="absolute bottom-0 right-0 left-0 h-1 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
+          </div>
+          <div class="p-6">
+            <div class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">خبرة ١٠+ سنة</div>
+            <h3 class="text-xl font-bold text-foreground mb-2">د. نورة العتيبي</h3>
+            <p class="text-primary font-medium mb-3">استشارية التجميل غير الجراحي</p>
+            <p class="text-muted-foreground text-sm">متخصصة في حقن الفيلر والبوتكس وتجديد البشرة</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-24 lg:py-32 bg-secondary/50">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold text-sm tracking-wider mb-4">شهادات عملائنا</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">آراء عملائنا الكرام</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">نفتخر بثقة عملائنا ورضاهم عن خدماتنا المتميزة</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 rounded-xl p-6">
+          <div class="mb-4">
+            <svg class="w-8 h-8 text-accent/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6">"تجربة رائعة! الفريق محترف جداً والنتيجة فاقت توقعاتي. بشرتي أصبحت أكثر نضارة وإشراقاً."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-border">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <span class="text-primary font-bold text-sm">ن</span>
+            </div>
+            <div>
+              <div class="font-semibold text-foreground text-sm">نورة السعيد</div>
+              <div class="text-xs text-muted-foreground">علاج البشرة بالليزر</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 rounded-xl p-6">
+          <div class="mb-4">
+            <svg class="w-8 h-8 text-accent/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6">"خدمة ممتازة ونتائج مذهلة. الدكتورة ليلى شرحت لي كل الخطوات بوضوح. شكراً لكم!"</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-border">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <span class="text-primary font-bold text-sm">ه</span>
+            </div>
+            <div>
+              <div class="font-semibold text-foreground text-sm">هند الفهد</div>
+              <div class="text-xs text-muted-foreground">الفيلر والبوتكس</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 rounded-xl p-6">
+          <div class="mb-4">
+            <svg class="w-8 h-8 text-accent/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6">"سعيدة جداً بالنتيجة النهائية. الفريق متعاون والعيادة نظيفة ومريحة. تجربة لا تُنسى."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-border">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <span class="text-primary font-bold text-sm">ر</span>
+            </div>
+            <div>
+              <div class="font-semibold text-foreground text-sm">ريم العتيبي</div>
+              <div class="text-xs text-muted-foreground">إزالة الشعر بالليزر</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 rounded-xl p-6">
+          <div class="mb-4">
+            <svg class="w-8 h-8 text-accent/50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-accent text-accent" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6">"أفضل عيادة جلدية زرتها. الاهتمام بالتفاصيل والراحة لا مثيل له. أنصح بها بشدة."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-border">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <span class="text-primary font-bold text-sm">س</span>
+            </div>
+            <div>
+              <div class="font-semibold text-foreground text-sm">سارة القحطاني</div>
+              <div class="text-xs text-muted-foreground">جلسات النضارة</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking" class="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Content Side -->
+        <div class="order-2 lg:order-1">
+          <span class="inline-block text-primary font-semibold text-sm tracking-wider mb-4">احجز الآن</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">احجز استشارتك المجانية</h2>
+          <p class="text-lg text-muted-foreground mb-10">
+            فريقنا جاهز للإجابة على استفساراتك ومساعدتك في اختيار العلاج المناسب. 
+            احجز موعدك الآن واحصل على استشارة مجانية مع أفضل الاستشاريين.
+          </p>
+
+          <!-- Benefits -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="font-medium text-foreground">استشارة مجانية</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="font-medium text-foreground">مواعيد مرنة</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <span class="font-medium text-foreground">ضمان الجودة</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              </div>
+              <span class="font-medium text-foreground">أحدث التقنيات</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="order-1 lg:order-2">
+          <div class="bg-card border border-border shadow-2xl rounded-xl p-8">
+            <form id="bookingForm" class="space-y-6">
+              <div class="text-center mb-8">
+                <h3 class="text-xl font-bold text-foreground mb-2">حجز موعد</h3>
+                <p class="text-sm text-muted-foreground">املأ البيانات وسيتم التواصل معك عبر الواتساب</p>
+              </div>
+
+              <div class="space-y-2">
+                <label for="name" class="block text-foreground font-medium">الاسم الكامل</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="أدخل اسمك الكامل"
+                  class="w-full h-12 px-4 bg-secondary/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl text-foreground placeholder:text-muted-foreground transition-all"
+                >
+                <p id="nameError" class="text-red-500 text-sm hidden"></p>
+              </div>
+
+              <div class="space-y-2">
+                <label for="phone" class="block text-foreground font-medium">رقم الجوال</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="05XXXXXXXX"
+                  dir="ltr"
+                  class="w-full h-12 px-4 bg-secondary/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl text-foreground placeholder:text-muted-foreground transition-all"
+                >
+                <p id="phoneError" class="text-red-500 text-sm hidden"></p>
+              </div>
+
+              <div class="space-y-2">
+                <label for="clinic" class="block text-foreground font-medium">العيادة/القسم المطلوب</label>
+                <select
+                  id="clinic"
+                  class="w-full h-12 px-4 bg-secondary/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl text-foreground appearance-none cursor-pointer transition-all"
+                  style="background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e&quot;); background-position: left 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-left: 2.5rem;"
+                >
+                  <option value="">اختر العيادة المطلوبة</option>
+                  <option value="dermatology">عيادة الجلدية</option>
+                  <option value="laser">عيادة الليزر</option>
+                  <option value="fillers">عيادة الفيلر والبوتكس</option>
+                  <option value="skincare">عيادة النضارة والتجديد</option>
+                  <option value="consultation">استشارة عامة</option>
+                </select>
+                <p id="clinicError" class="text-red-500 text-sm hidden"></p>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                تأكيد الحجز عبر الواتساب
+              </button>
+
+              <p class="text-xs text-center text-muted-foreground">بالضغط على الزر سيتم توجيهك للواتساب لإتمام الحجز</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-foreground text-background py-16">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-14 h-10 rounded-full flex items-center justify-center">
+              <img class="cursor-pointer" src="public/favicon-2.png" alt="logo" >
+            </div>
+            <span class="text-2xl font-bold text-background">لومير</span>
+          </div>
+          <p class="text-background/70 leading-relaxed mb-6">
+            عيادات لومير الفاخرة للجلدية والليزر والتجميل - نقدم أرقى الخدمات بأعلى معايير الجودة العالمية
+          </p>
+          <div class="flex gap-4">
+            <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" class="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Twitter">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold text-lg mb-6">روابط سريعة</h4>
+          <ul class="space-y-3">
+            <li><a href="#services" class="text-background/70 hover:text-primary transition-colors">خدماتنا</a></li>
+            <li><a href="#doctors" class="text-background/70 hover:text-primary transition-colors">طبيباتنا</a></li>
+            <li><a href="#testimonials" class="text-background/70 hover:text-primary transition-colors">آراء العملاء</a></li>
+            <li><a href="#booking" class="text-background/70 hover:text-primary transition-colors">احجز موعد</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="font-bold text-lg mb-6">خدماتنا</h4>
+          <ul class="space-y-3">
+            <li class="text-background/70">علاجات البشرة</li>
+            <li class="text-background/70">الليزر وإزالة الشعر</li>
+            <li class="text-background/70">الفيلر والبوتكس</li>
+            <li class="text-background/70">جلسات النضارة</li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="font-bold text-lg mb-6">تواصل معنا</h4>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span class="text-background/70" dir="ltr">+966 50 000 0000</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span class="text-background/70">info@lumiere.sa</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-background/70">الرياض، المملكة العربية السعودية</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-background/20 text-center">
+        <p class="text-background/50 text-sm"> جميع الحقوق محفوظة عيادات لومار  <span id="currentYear"></span> © </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="fixed bottom-0 right-0 left-0 z-50 md:hidden bg-card border-t border-border shadow-2xl safe-bottom">
+    <div class="grid grid-cols-2 gap-0">
+      <a href="tel:+966533435227" class="flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground font-semibold transition-colors hover:bg-primary/90">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span>اتصل الآن</span>
+      </a>
+      <a href="https://wa.me/966533435227?text=مرحباً، أود حجز موعد في عيادات لومير" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-4 bg-[#25D366] text-white font-semibold transition-colors hover:bg-[#22c55e]">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>واتساب</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+
+    menuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      menuIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    }
+
+    // Current Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Booking Form with WhatsApp Integration
+    const bookingForm = document.getElementById('bookingForm');
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const clinicSelect = document.getElementById('clinic');
+    const nameError = document.getElementById('nameError');
+    const phoneError = document.getElementById('phoneError');
+    const clinicError = document.getElementById('clinicError');
+
+    const clinicLabels = {
+      'dermatology': 'عيادة الجلدية',
+      'laser': 'عيادة الليزر',
+      'fillers': 'عيادة الفيلر والبوتكس',
+      'skincare': 'عيادة النضارة والتجديد',
+      'consultation': 'استشارة عامة'
+    };
+
+    function validateForm() {
+      let isValid = true;
+
+      // Reset errors
+      nameError.classList.add('hidden');
+      phoneError.classList.add('hidden');
+      clinicError.classList.add('hidden');
+      nameInput.classList.remove('border-red-500');
+      phoneInput.classList.remove('border-red-500');
+      clinicSelect.classList.remove('border-red-500');
+
+      // Validate name
+      if (!nameInput.value.trim()) {
+        nameError.textContent = 'الرجاء إدخال الاسم الكامل';
+        nameError.classList.remove('hidden');
+        nameInput.classList.add('border-red-500');
+        isValid = false;
+      }
+
+      // Validate phone
+      const phoneValue = phoneInput.value.replace(/\s/g, '');
+      if (!phoneValue) {
+        phoneError.textContent = 'الرجاء إدخال رقم الجوال';
+        phoneError.classList.remove('hidden');
+        phoneInput.classList.add('border-red-500');
+        isValid = false;
+      } else if (!/^(05|5|009665|9665|\+9665)\d{8}$/.test(phoneValue)) {
+        phoneError.textContent = 'الرجاء إدخال رقم جوال صحيح';
+        phoneError.classList.remove('hidden');
+        phoneInput.classList.add('border-red-500');
+        isValid = false;
+      }
+
+      // Validate clinic
+      if (!clinicSelect.value) {
+        clinicError.textContent = 'الرجاء اختيار العيادة';
+        clinicError.classList.remove('hidden');
+        clinicSelect.classList.add('border-red-500');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    // Clear errors on input
+    nameInput.addEventListener('input', function() {
+      nameError.classList.add('hidden');
+      nameInput.classList.remove('border-red-500');
+    });
+
+    phoneInput.addEventListener('input', function() {
+      phoneError.classList.add('hidden');
+      phoneInput.classList.remove('border-red-500');
+    });
+
+    clinicSelect.addEventListener('change', function() {
+      clinicError.classList.add('hidden');
+      clinicSelect.classList.remove('border-red-500');
+    });
+
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!validateForm()) {
+        return;
+      }
+
+      const selectedClinicLabel = clinicLabels[clinicSelect.value] || clinicSelect.value;
+
+      const message = `السلام عليكم، أرغب في حجز موعد لدى عيادات لومير.
+الاسم: ${nameInput.value}
+رقم الجوال: ${phoneInput.value}
+العيادة المطلوبة: ${selectedClinicLabel}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/966533435227?text=${encodedMessage}`;
+
+      window.open(whatsappUrl, '_blank');
+    });
+
+    // Add bottom padding on mobile to account for sticky CTA
+    if (window.innerWidth < 768) {
+      document.body.style.paddingBottom = '64px';
+    }
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth < 768) {
+        document.body.style.paddingBottom = '64px';
+      } else {
+        document.body.style.paddingBottom = '0';
+      }
+    });
+  </script>
+
+</body>
+</html>
